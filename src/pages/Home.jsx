@@ -3,13 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProducts, getCategories } from '../features/products/productSlice';
 import ProductCard from '../components/ProductCard';
 
-const Products = () => {
+const Home = () => {
   const dispatch = useDispatch();
   const { products, categories, loading, error } = useSelector((state) => state.products);
   
   const [filters, setFilters] = useState({
     category_id: '',
     search: '',
+    min_price: '',
+    max_price: '',
   });
 
   useEffect(() => {
@@ -19,34 +21,37 @@ const Products = () => {
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
-    const newFilters = { ...filters, [name]: value };
-    setFilters(newFilters);
-    
-    // Apply filters automatically
-    const activeFilters = {};
-    if (newFilters.category_id) activeFilters.category_id = newFilters.category_id;
-    if (newFilters.search) activeFilters.search = newFilters.search;
-    dispatch(getProducts(activeFilters));
+    setFilters({ ...filters, [name]: value });
   };
 
   const handleApplyFilters = () => {
     const activeFilters = {};
     if (filters.category_id) activeFilters.category_id = filters.category_id;
     if (filters.search) activeFilters.search = filters.search;
+    if (filters.min_price) activeFilters.min_price = filters.min_price;
+    if (filters.max_price) activeFilters.max_price = filters.max_price;
     dispatch(getProducts(activeFilters));
   };
 
   const handleClearFilters = () => {
-    setFilters({ category_id: '', search: '' });
+    setFilters({ category_id: '', search: '', min_price: '', max_price: '' });
     dispatch(getProducts());
   };
 
   return (
-    <div className="bg-gray-50">
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <div className="bg-gradient-to-r from-pink-500 to-purple-600 text-white py-12">
+        <div className="container mx-auto px-4">
+          <h1 className="text-4xl font-bold mb-2">Beauty Shop</h1>
+          <p className="text-lg">Discover amazing beauty products</p>
+        </div>
+      </div>
+
       <div className="container mx-auto px-4 py-8">
         {/* Search & Filter Section */}
         <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <input
               type="text"
               name="search"
@@ -66,6 +71,22 @@ const Products = () => {
                 <option key={cat.id} value={cat.id}>{cat.name}</option>
               ))}
             </select>
+            <input
+              type="number"
+              name="min_price"
+              placeholder="Min Price"
+              value={filters.min_price}
+              onChange={handleFilterChange}
+              className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500"
+            />
+            <input
+              type="number"
+              name="max_price"
+              placeholder="Max Price"
+              value={filters.max_price}
+              onChange={handleFilterChange}
+              className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500"
+            />
           </div>
           <div className="flex gap-4 mt-4">
             <button
@@ -135,4 +156,5 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Home;
+

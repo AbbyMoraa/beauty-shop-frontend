@@ -1,43 +1,68 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
+import Landing from "./pages/Landing";
+import Home from "./pages/Home.jsx";
 import Products from "./pages/Products";
+import ProductDetails from "./pages/ProductDetails";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import Profile from "./pages/Profile.jsx";
+
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
     <Router>
-      {/* Navbar */}
-      <nav className="p-4 bg-white shadow flex gap-6">
-        <Link 
-          to="/" 
-          className="text-pink-500 font-semibold hover:text-pink-700 transition-colors"
-        >
-          Products
-        </Link>
-        <Link 
-          to="/cart" 
-          className="text-pink-500 font-semibold hover:text-pink-700 transition-colors"
-        >
-          Cart
-        </Link>
-        <Link 
-          to="/checkout" 
-          className="text-pink-500 font-semibold hover:text-pink-700 transition-colors"
-        >
-          Checkout
-        </Link>
-      </nav>
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
 
-      {/* Page Content */}
-      <main className="p-6 bg-pink-100 min-h-screen">
-        <Routes>
-          <Route path="/" element={<Products />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
-        </Routes>
-      </main>
+        <main className="flex-grow">
+          <Routes>
+            {/* Public pages */}
+            <Route path="/" element={<Landing />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/products/:id" element={<ProductDetails />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+
+            {/* Protected pages */}
+            <Route
+              path="/cart"
+              element={
+                <ProtectedRoute>
+                  <Cart />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/checkout"
+              element={
+                <ProtectedRoute>
+                  <Checkout />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </main>
+
+        <Footer />
+      </div>
     </Router>
   );
 }
 
 export default App;
+
