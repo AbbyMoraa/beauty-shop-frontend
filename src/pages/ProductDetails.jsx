@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductById } from '../features/products/productSlice';
+import { addToCart } from '../features/cart/cartSlice';
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -12,6 +13,11 @@ const ProductDetails = () => {
   useEffect(() => {
     dispatch(getProductById(id));
   }, [dispatch, id]);
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(selectedProduct));
+    alert('Product added to cart!');
+  };
 
   if (loading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
   if (error) return <div className="min-h-screen flex items-center justify-center text-red-600">Error: {error}</div>;
@@ -53,6 +59,7 @@ const ProductDetails = () => {
               </div>
 
               <button
+                onClick={handleAddToCart}
                 disabled={selectedProduct.stock === 0}
                 className={`mt-8 w-full py-3 rounded-lg font-semibold ${
                   selectedProduct.stock > 0
