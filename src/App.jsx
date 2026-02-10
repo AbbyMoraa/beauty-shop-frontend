@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -8,9 +8,6 @@ import ProductDetails from "./pages/ProductDetails";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
-import Profile from "./pages/Profile.jsx";
-
-import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -27,16 +24,6 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
-
-            {/* Protected pages */}
-            <Route
-              path="/profile"
-              element={
-                <ProtectedRoute>
-                  <Profile />
-                </ProtectedRoute>
-              }
-            />
           </Routes>
         </main>
 

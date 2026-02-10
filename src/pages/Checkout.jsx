@@ -17,7 +17,7 @@ const Checkout = () => {
     postalCode: '',
     country: 'Kenya',
     
-    // Billing Info (for payment integration)
+    // Billing Info
     cardNumber: '',
     cardName: '',
     expiryDate: '',
@@ -33,7 +33,7 @@ const Checkout = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Prepare order data for payment integration
+    // Prepare order data
     const orderData = {
       items: items,
       total: total,

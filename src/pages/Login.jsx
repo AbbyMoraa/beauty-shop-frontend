@@ -25,7 +25,7 @@ const Login = () => {
       } else {
         await dispatch(registerUser(formData)).unwrap();
       }
-      navigate("/profile");
+      navigate("/");
     } catch (err) {
       console.error(err);
     }

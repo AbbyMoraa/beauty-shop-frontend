@@ -1,7 +1,17 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../features/auth/authSlice';
 
 const Navbar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate('/');
+  };
   
   return (
     <nav className="bg-pink-100 shadow-lg">
@@ -35,14 +45,28 @@ const Navbar = () => {
             >
               Cart
             </Link>
-            <Link 
-              to="/login" 
-              className={`text-pink-600 font-bold text-lg transition ${
-                location.pathname === '/login' ? 'opacity-100' : 'opacity-70 hover:opacity-100'
-              }`}
-            >
-              Login
-            </Link>
+            {user ? (
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full bg-pink-600 text-white flex items-center justify-center font-bold text-xl">
+                  {user.email ? user.email.charAt(0).toUpperCase() : user.name ? user.name.charAt(0).toUpperCase() : 'U'}
+                </div>
+                <button 
+                  onClick={handleLogout} 
+                  className="text-pink-600 font-bold text-lg hover:opacity-70 transition"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <Link 
+                to="/login" 
+                className={`text-pink-600 font-bold text-lg transition ${
+                  location.pathname === '/login' ? 'opacity-100' : 'opacity-70 hover:opacity-100'
+                }`}
+              >
+                Login
+              </Link>
+            )}
           </div>
         </div>
       </div>
