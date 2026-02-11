@@ -1,0 +1,345 @@
+.order-confirmation-page {
+  min-height: 100vh;
+  padding: 2rem;
+  background: #f5f5f5;
+}
+
+.confirmation-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.confirmation-container h1 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.order-id {
+  text-align: center;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  padding: 0 2rem;
+}
+
+.step {
+  flex: 1;
+  text-align: center;
+  padding: 1rem;
+  background: #e0e0e0;
+  margin: 0 0.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.step.active {
+  background: #4caf50;
+  color: white;
+}
+
+.step-content {
+  margin-top: 2rem;
+}
+
+.billing-address-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.billing-address-form h3 {
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.billing-address-form button,
+.next-btn {
+  width: 100%;
+  padding: 1rem;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.billing-address-form button:hover,
+.next-btn:hover {
+  background: #45a049;
+}
+
+.billing-address-form button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.payment-simulation {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.payment-simulation h3 {
+  margin-bottom: 1.5rem;
+}
+
+.payment-method-selector {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 4px;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  background: white;
+}
+
+.payment-option:hover {
+  border-color: #4caf50;
+}
+
+.payment-option input[type="radio"] {
+  margin-right: 0.75rem;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.payment-option span {
+  font-weight: 500;
+}
+
+.mpesa-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.pay-btn {
+  width: 100%;
+  padding: 1rem;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.pay-btn:hover:not(:disabled) {
+  background: #45a049;
+}
+
+.pay-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.payment-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.simulate-btn,
+.mpesa-btn {
+  flex: 1;
+  padding: 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.simulate-btn {
+  background: #2196f3;
+  color: white;
+}
+
+.simulate-btn:hover {
+  background: #1976d2;
+}
+
+.mpesa-btn {
+  background: #4caf50;
+  color: white;
+}
+
+.mpesa-btn:hover {
+  background: #45a049;
+}
+
+.mpesa-form {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 4px;
+}
+
+.mpesa-form input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.mpesa-form button {
+  width: 100%;
+  padding: 1rem;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.invoice-display {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.invoice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #333;
+}
+
+.print-btn {
+  padding: 0.5rem 1rem;
+  background: #666;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.invoice-details {
+  margin-bottom: 2rem;
+}
+
+.invoice-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.invoice-row .label {
+  font-weight: 600;
+}
+
+.status-paid {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.status-pending {
+  color: #ff9800;
+  font-weight: bold;
+}
+
+.order-details {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 4px;
+}
+
+.order-details pre {
+  overflow-x: auto;
+  font-size: 0.875rem;
+}
+
+.success-banner {
+  text-align: center;
+  padding: 2rem;
+  background: #e8f5e9;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.success-banner h2 {
+  color: #4caf50;
+  margin-bottom: 0.5rem;
+}
+
+.view-orders-btn {
+  width: 100%;
+  padding: 1rem;
+  background: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 2rem;
+}
+
+.view-orders-btn:hover {
+  background: #1976d2;
+}
+
+.error-message {
+  padding: 1rem;
+  background: #ffebee;
+  color: #c62828;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.success-message {
+  padding: 1rem;
+  background: #e8f5e9;
+  color: #2e7d32;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+@media print {
+  .invoice-header button,
+  .view-orders-btn {
+    display: none;
+  }
+}
