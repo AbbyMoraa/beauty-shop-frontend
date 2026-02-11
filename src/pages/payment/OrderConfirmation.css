@@ -1,7 +1,7 @@
 .order-confirmation-page {
   min-height: 100vh;
   padding: 2rem;
-  background: #f5f5f5;
+  background: #fff0f5;
 }
 
 .confirmation-container {
@@ -10,12 +10,13 @@
   background: white;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(219, 112, 147, 0.1);
 }
 
 .confirmation-container h1 {
   text-align: center;
   margin-bottom: 0.5rem;
+  color: #db7093;
 }
 
 .order-id {
@@ -35,14 +36,15 @@
   flex: 1;
   text-align: center;
   padding: 1rem;
-  background: #e0e0e0;
+  background: #ffe4e1;
   margin: 0 0.5rem;
   border-radius: 4px;
   font-weight: 500;
+  color: #db7093;
 }
 
 .step.active {
-  background: #4caf50;
+  background: #db7093;
   color: white;
 }
 
@@ -82,7 +84,7 @@
 .next-btn {
   width: 100%;
   padding: 1rem;
-  background: #4caf50;
+  background: #db7093;
   color: white;
   border: none;
   border-radius: 4px;
@@ -93,7 +95,7 @@
 
 .billing-address-form button:hover,
 .next-btn:hover {
-  background: #45a049;
+  background: #c5607a;
 }
 
 .billing-address-form button:disabled {
@@ -129,7 +131,7 @@
 }
 
 .payment-option:hover {
-  border-color: #4caf50;
+  border-color: #db7093;
 }
 
 .payment-option input[type="radio"] {
@@ -152,7 +154,7 @@
 .pay-btn {
   width: 100%;
   padding: 1rem;
-  background: #4caf50;
+  background: #db7093;
   color: white;
   border: none;
   border-radius: 4px;
@@ -162,7 +164,7 @@
 }
 
 .pay-btn:hover:not(:disabled) {
-  background: #45a049;
+  background: #c5607a;
 }
 
 .pay-btn:disabled {
@@ -187,21 +189,21 @@
 }
 
 .simulate-btn {
-  background: #2196f3;
+  background: #db7093;
   color: white;
 }
 
 .simulate-btn:hover {
-  background: #1976d2;
+  background: #c5607a;
 }
 
 .mpesa-btn {
-  background: #4caf50;
+  background: #ff69b4;
   color: white;
 }
 
 .mpesa-btn:hover {
-  background: #45a049;
+  background: #ff1493;
 }
 
 .mpesa-form {
@@ -222,7 +224,7 @@
 .mpesa-form button {
   width: 100%;
   padding: 1rem;
-  background: #4caf50;
+  background: #db7093;
   color: white;
   border: none;
   border-radius: 4px;
@@ -271,7 +273,7 @@
 }
 
 .status-paid {
-  color: #4caf50;
+  color: #db7093;
   font-weight: bold;
 }
 
@@ -295,20 +297,20 @@
 .success-banner {
   text-align: center;
   padding: 2rem;
-  background: #e8f5e9;
+  background: #ffe4e1;
   border-radius: 8px;
   margin-bottom: 2rem;
 }
 
 .success-banner h2 {
-  color: #4caf50;
+  color: #db7093;
   margin-bottom: 0.5rem;
 }
 
 .view-orders-btn {
   width: 100%;
   padding: 1rem;
-  background: #2196f3;
+  background: #db7093;
   color: white;
   border: none;
   border-radius: 4px;
@@ -318,7 +320,7 @@
 }
 
 .view-orders-btn:hover {
-  background: #1976d2;
+  background: #c5607a;
 }
 
 .error-message {
@@ -331,8 +333,8 @@
 
 .success-message {
   padding: 1rem;
-  background: #e8f5e9;
-  color: #2e7d32;
+  background: #ffe4e1;
+  color: #db7093;
   border-radius: 4px;
   margin-bottom: 1rem;
 }
