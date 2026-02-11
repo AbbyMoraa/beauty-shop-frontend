@@ -2,6 +2,9 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: "http://localhost:5000",
+  headers: {
+    'Content-Type': 'application/json'
+  }
 });
 
 api.interceptors.request.use((config) => {
@@ -13,6 +16,10 @@ api.interceptors.request.use((config) => {
     console.log('✅ Authorization header set:', config.headers.Authorization);
   } else {
     console.log('❌ No token found in localStorage');
+  }
+  // Ensure Content-Type is set
+  if (!config.headers['Content-Type']) {
+    config.headers['Content-Type'] = 'application/json';
   }
   console.log('📤 Request config:', {
     url: config.url,

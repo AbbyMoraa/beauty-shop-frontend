@@ -52,7 +52,12 @@ export const initiatePayment = createAsyncThunk(
       console.log('✅ Payment initiation response:', response.data);
       return response.data;
     } catch (err) {
-      console.log('❌ Payment initiation error:', err.response?.data);
+      console.log('❌ RAW ERROR OBJECT:', err);
+      console.log('❌ ERROR RESPONSE:', err.response);
+      console.log('❌ ERROR RESPONSE DATA:', err.response?.data);
+      console.log('❌ ERROR RESPONSE STATUS:', err.response?.status);
+      console.log('❌ ERROR RESPONSE HEADERS:', err.response?.headers);
+      console.log('❌ ERROR MESSAGE:', err.message);
       return rejectWithValue(err.response?.data || { message: "Payment initiation failed" });
     }
   }
