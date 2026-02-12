@@ -36,7 +36,7 @@ function Analytics() {
           onChange={(e) => setDateRange({...dateRange, to: e.target.value})}
           className="px-2.5 py-2.5 border border-gray-300 rounded bg-white text-sm focus:outline-none focus:border-pink-500 focus:shadow-[0_0_5px_#ec4899]"
         />
-        <button onClick={loadAnalytics} className="px-5 py-2.5 bg-pink-600 text-white rounded text-sm transition-all duration-200 hover:bg-pink-700">Update</button>
+        <button onClick={loadAnalytics} className="px-5 py-2.5 bg-gray-600 text-white rounded text-sm transition-all duration-200 hover:bg-gray-700">Update</button>
       </div>
 
       <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-5 mb-6">

@@ -9,7 +9,7 @@ function AdminDashboard() {
   const dispatch = useDispatch();
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-pink-50 py-8">
       <div className="max-w-7xl mx-auto px-8">
         <h1 className="text-3xl font-bold text-gray-800 mb-8">Admin Dashboard</h1>
         <nav className="flex gap-3 mb-8 border-b border-gray-200">
