@@ -1,0 +1,230 @@
+.admin-dashboard {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #fce7f3, #fbcfe8);
+  font-family: Arial, sans-serif;
+}
+
+.admin-header {
+  background: linear-gradient(to right, #ec4899, #db2777);
+  padding: 1.2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.admin-header h1 {
+  color: white;
+  margin: 0;
+  font-size: 1.9rem;
+  text-shadow: 2px 2px 5px black;
+}
+
+.admin-header nav {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.admin-header button {
+  padding: 0.6rem 1.3rem;
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.admin-header button:hover {
+  background: white;
+  color: #ec4899;
+  transform: scale(1.05);
+}
+
+.admin-header button.active {
+  background: white;
+  color: #ec4899;
+  border-bottom: 4px solid #fbbf24;
+  font-weight: bold;
+}
+
+.main-content {
+  padding: 2rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.orders-section h2,
+.analytics-section h2,
+.user-management h2 {
+  color: #ec4899;
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+  text-shadow: none;
+  border-bottom: 2px solid #ec4899;
+  padding-bottom: 0.4rem;
+  display: inline-block;
+}
+
+.filters,
+.date-filter {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.admin-dashboard input,
+.admin-dashboard select {
+  padding: 0.6rem;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  background: white;
+}
+
+.admin-dashboard input:focus,
+.admin-dashboard select:focus {
+  outline: none;
+  border-color: #ec4899;
+  box-shadow: 0 0 5px #ec4899;
+}
+
+.admin-dashboard button {
+  padding: 0.6rem 1.2rem;
+  background: #ec4899;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.admin-dashboard button:hover {
+  background: #db2777;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.admin-dashboard button:active {
+  transform: translateY(0);
+}
+
+.admin-dashboard table {
+  width: 100%;
+  background: white;
+  border-collapse: collapse;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.admin-dashboard th {
+  background: #ec4899;
+  color: white;
+  padding: 0.9rem;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.admin-dashboard td {
+  padding: 0.8rem;
+  border-bottom: 1px solid lightgray;
+  color: black;
+}
+
+.admin-dashboard tr:hover {
+  background: #fce7f3;
+}
+
+.admin-dashboard td input {
+  width: 90%;
+  padding: 0.4rem;
+}
+
+.stats-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+  border-left: 5px solid #ec4899;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.card h3 {
+  color: dimgray;
+  margin: 0 0 0.8rem 0;
+  font-size: 1.1rem;
+}
+
+.big-number {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #ec4899;
+  margin: 0;
+}
+
+.top-products {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  margin-top: 1.5rem;
+}
+
+.top-products h3 {
+  color: #ec4899;
+  margin-top: 0;
+  font-size: 1.4rem;
+  border-bottom: 3px solid #ec4899;
+  padding-bottom: 0.5rem;
+}
+
+.edit-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  min-width: 350px;
+  border: 3px solid #ec4899;
+}
+
+.edit-modal h3 {
+  color: #ec4899;
+  margin-top: 0;
+  border-bottom: 2px solid #fce7f3;
+  padding-bottom: 0.5rem;
+}
+
+.edit-modal label {
+  display: block;
+  margin: 0.8rem 0 0.3rem 0;
+  color: dimgray;
+  font-weight: bold;
+}
+
+.edit-modal select {
+  width: 100%;
+  margin-bottom: 0.8rem;
+}
