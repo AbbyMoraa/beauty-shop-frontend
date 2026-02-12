@@ -26,23 +26,23 @@ function OrdersTable() {
     });
   };
 
-  const handleExport = async (format) => {
-    try {
-      const token = localStorage.getItem('token');
-      const endpoint = format === 'csv' ? '/api/admin/export/orders' : '/api/admin/export/orders/pdf';
-      const response = await axios.get(endpoint, {
-        headers: { Authorization: `Bearer ${token}` },
-        responseType: 'blob'
-      });
-      
-      const blob = new Blob([response.data]);
+  const handleExport = (format) => {
+    if (format === 'csv') {
+      // Create CSV content
+      const headers = ['Order ID', 'Customer', 'Total', 'Status', 'Date'];
+      const rows = orders && orders.length > 0 
+        ? orders.map(order => [order.id, order.customer, order.total, order.status, order.date].join(','))
+        : [];
+      const csvContent = [headers.join(','), ...rows].join('\n');
+
+      // Download CSV
+      const blob = new Blob([csvContent], { type: 'text/csv' });
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `orders.${format}`;
+      a.download = `orders_${new Date().toISOString().split('T')[0]}.csv`;
       a.click();
-    } catch (error) {
-      console.error('Export failed:', error);
+      window.URL.revokeObjectURL(url);
     }
   };
 
@@ -69,7 +69,6 @@ function OrdersTable() {
         />
         <button onClick={loadOrders} className="px-5 py-2.5 bg-gray-600 text-white rounded text-sm transition-all duration-200 hover:bg-gray-700">Apply Filters</button>
         <button onClick={() => handleExport('csv')} className="px-5 py-2.5 bg-gray-600 text-white rounded text-sm transition-all duration-200 hover:bg-gray-700">Export CSV</button>
-        <button onClick={() => handleExport('pdf')} className="px-5 py-2.5 bg-gray-600 text-white rounded text-sm transition-all duration-200 hover:bg-gray-700">Export PDF</button>
       </div>
 
       <table className="w-full bg-white rounded-md overflow-hidden shadow-lg">
