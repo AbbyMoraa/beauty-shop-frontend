@@ -29,12 +29,9 @@ export const simulatePayment = createAsyncThunk(
   "payment/simulatePayment",
   async (orderId, { rejectWithValue }) => {
     try {
-      console.log('📤 Calling POST /payments/simulate with order_id:', orderId);
       const response = await api.post("/payments/simulate", { order_id: orderId });
-      console.log('✅ Payment simulation response:', response.data);
       return response.data;
     } catch (err) {
-      console.log('❌ Payment simulation error:', err.response?.data);
       return rejectWithValue(err.response?.data || { message: "Payment simulation failed" });
     }
   }
@@ -44,20 +41,12 @@ export const initiatePayment = createAsyncThunk(
   "payment/initiatePayment",
   async ({ orderId, phoneNumber }, { rejectWithValue }) => {
     try {
-      console.log('📤 Calling POST /payments/initiate with:', { orderId, phoneNumber });
       const response = await api.post("/payments/initiate", {
         order_id: orderId,
         phone_number: phoneNumber,
       });
-      console.log('✅ Payment initiation response:', response.data);
       return response.data;
     } catch (err) {
-      console.log('❌ RAW ERROR OBJECT:', err);
-      console.log('❌ ERROR RESPONSE:', err.response);
-      console.log('❌ ERROR RESPONSE DATA:', err.response?.data);
-      console.log('❌ ERROR RESPONSE STATUS:', err.response?.status);
-      console.log('❌ ERROR RESPONSE HEADERS:', err.response?.headers);
-      console.log('❌ ERROR MESSAGE:', err.message);
       return rejectWithValue(err.response?.data || { message: "Payment initiation failed" });
     }
   }

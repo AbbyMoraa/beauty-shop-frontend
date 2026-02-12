@@ -32,7 +32,6 @@ const Checkout = () => {
     setError(null);
     
     try {
-      // Sync frontend cart items to backend cart
       for (const item of items) {
         await api.post('/cart', {
           product_id: item.id,
@@ -40,15 +39,11 @@ const Checkout = () => {
         });
       }
       
-      // Create order from backend cart
       const response = await api.post('/checkout');
-      console.log('Order created:', response.data);
-      
       const orderId = response.data.order_id;
       dispatch(clearCart());
       navigate(`/order-confirmation?orderId=${orderId}`);
     } catch (err) {
-      console.error('Order creation failed:', err);
       setError(err.response?.data?.error || err.response?.data?.message || 'Failed to create order');
       setLoading(false);
     }

@@ -56,8 +56,22 @@ const InvoiceDisplay = ({ orderId }) => {
 
       {currentInvoice.order_details && (
         <div className="order-details">
-          <h3>Order Details</h3>
-          <pre>{JSON.stringify(currentInvoice.order_details, null, 2)}</pre>
+          <h3>Order Items</h3>
+          <div className="items-list">
+            {currentInvoice.order_details.items?.map((item, index) => (
+              <div key={index} className="item-row">
+                <span>Product #{item.product_id}</span>
+                <span>Qty: {item.quantity}</span>
+                <span>KES {item.unit_price?.toFixed(2)}</span>
+              </div>
+            ))}
+          </div>
+          <div className="payment-info">
+            <span className="label">Payment Status:</span>
+            <span className={`value status-${currentInvoice.order_details.payment_status?.toLowerCase()}`}>
+              {currentInvoice.order_details.payment_status}
+            </span>
+          </div>
         </div>
       )}
     </div>

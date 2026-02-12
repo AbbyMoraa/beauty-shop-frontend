@@ -45,7 +45,7 @@ const PaymentSimulation = ({ orderId, onPaymentSuccess }) => {
       
       {paymentStatus && (
         <div className="success-message">
-          <p>{paymentStatus.message}</p>
+          <p>✓ {paymentStatus.message}</p>
           {paymentStatus.invoice_number && <p>Invoice: {paymentStatus.invoice_number}</p>}
         </div>
       )}

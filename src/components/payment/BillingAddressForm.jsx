@@ -23,10 +23,7 @@ const BillingAddressForm = ({ onSuccess }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSuccess(false);
-    console.log('📤 Submitting address:', formData);
-    console.log('🔑 Token in localStorage:', localStorage.getItem('token'));
     const result = await dispatch(createAddress(formData));
-    console.log('📥 Address submission result:', result);
     if (createAddress.fulfilled.match(result)) {
       setSuccess(true);
       onSuccess && onSuccess(result.payload);
