@@ -2,13 +2,15 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { clearCart } from '../features/cart/cartSlice';
+import api from '../utils/axios';
 
 const Checkout = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { items } = useSelector((state) => state.cart);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
-    // Shipping Address
     fullName: '',
     email: '',
     phone: '',
@@ -16,12 +18,6 @@ const Checkout = () => {
     city: '',
     postalCode: '',
     country: 'Kenya',
-    
-    // Billing Info
-    cardNumber: '',
-    cardName: '',
-    expiryDate: '',
-    cvv: '',
   });
 
   const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -32,38 +28,25 @@ const Checkout = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError(null);
     
-    // Prepare order data
-    const orderData = {
-      items: items,
-      total: total,
-      shippingAddress: {
-        fullName: formData.fullName,
-        email: formData.email,
-        phone: formData.phone,
-        address: formData.address,
-        city: formData.city,
-        postalCode: formData.postalCode,
-        country: formData.country,
-      },
-      billingInfo: {
-        cardNumber: formData.cardNumber,
-        cardName: formData.cardName,
-        expiryDate: formData.expiryDate,
-        cvv: formData.cvv,
-      },
-      timestamp: new Date().toISOString(),
-    };
-
-    // TODO: Payment integration goes here
-    // Example: await processPayment(orderData);
-    
-    console.log('Order Data for Payment:', orderData);
-    
-    // Simulate successful payment
-    alert('Order placed successfully! (Payment integration pending)');
-    dispatch(clearCart());
-    navigate('/');
+    try {
+      for (const item of items) {
+        await api.post('/cart', {
+          product_id: item.id,
+          quantity: item.quantity
+        });
+      }
+      
+      const response = await api.post('/checkout');
+      const orderId = response.data.order_id;
+      dispatch(clearCart());
+      navigate(`/order-confirmation?orderId=${orderId}`);
+    } catch (err) {
+      setError(err.response?.data?.error || err.response?.data?.message || 'Failed to create order');
+      setLoading(false);
+    }
   };
 
   if (items.length === 0) {
@@ -89,6 +72,11 @@ const Checkout = () => {
           {/* Checkout Form */}
           <div className="lg:col-span-2">
             <form onSubmit={handleSubmit} className="space-y-6">
+              {error && (
+                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+                  {error}
+                </div>
+              )}
               {/* Shipping Address */}
               <div className="bg-white rounded-lg shadow-md p-6">
                 <h2 className="text-xl font-bold text-gray-800 mb-4">Shipping Address</h2>
@@ -161,59 +149,26 @@ const Checkout = () => {
                 </div>
               </div>
 
-              {/* Payment Information */}
+              {/* Payment Method */}
               <div className="bg-white rounded-lg shadow-md p-6">
-                <h2 className="text-xl font-bold text-gray-800 mb-4">Payment Information</h2>
-                <p className="text-sm text-gray-600 mb-4">
-                  Note: This is a placeholder for payment integration
-                </p>
-                <div className="space-y-4">
-                  <input
-                    type="text"
-                    name="cardName"
-                    placeholder="Cardholder Name"
-                    value={formData.cardName}
-                    onChange={handleChange}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500"
-                    required
-                  />
-                  <input
-                    type="text"
-                    name="cardNumber"
-                    placeholder="Card Number"
-                    value={formData.cardNumber}
-                    onChange={handleChange}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500"
-                    required
-                  />
-                  <div className="grid grid-cols-2 gap-4">
-                    <input
-                      type="text"
-                      name="expiryDate"
-                      placeholder="MM/YY"
-                      value={formData.expiryDate}
-                      onChange={handleChange}
-                      className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500"
-                      required
-                    />
-                    <input
-                      type="text"
-                      name="cvv"
-                      placeholder="CVV"
-                      value={formData.cvv}
-                      onChange={handleChange}
-                      className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500"
-                      required
-                    />
+                <h2 className="text-xl font-bold text-gray-800 mb-4">Payment Method</h2>
+                <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                  <div className="flex items-center mb-2">
+                    <span className="text-2xl mr-3">📱</span>
+                    <span className="font-semibold text-gray-800">M-Pesa STK Push</span>
                   </div>
+                  <p className="text-sm text-gray-600">
+                    You will receive an M-Pesa prompt on your phone to complete the payment.
+                  </p>
                 </div>
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-pink-600 text-white py-3 rounded-lg hover:bg-pink-700 transition font-semibold"
+                disabled={loading}
+                className="w-full bg-pink-600 text-white py-3 rounded-lg hover:bg-pink-700 transition font-semibold disabled:bg-gray-400"
               >
-                Place Order
+                {loading ? 'Creating Order...' : 'Place Order'}
               </button>
             </form>
           </div>
