@@ -33,7 +33,7 @@ function UserManagement() {
       <table className="w-full bg-white rounded-md overflow-hidden shadow-lg">
         <thead>
           <tr>
-            <th className="bg-gray-700 text-white px-3.5 py-3.5 text-left text-sm font-semibold">ID</th>
+            <th className="bg-gray-700 text-white px-3.5 py-3.5 text-left text-sm font-semibold">#</th>
             <th className="bg-gray-700 text-white px-3.5 py-3.5 text-left text-sm font-semibold">Username/Email</th>
             <th className="bg-gray-700 text-white px-3.5 py-3.5 text-left text-sm font-semibold">Role</th>
             <th className="bg-gray-700 text-white px-3.5 py-3.5 text-left text-sm font-semibold">Status</th>
@@ -42,9 +42,9 @@ function UserManagement() {
         </thead>
         <tbody>
           {users && Array.isArray(users) && users.length > 0 ? (
-            users.map(user => (
+            users.map((user, index) => (
               <tr key={user.id} className="hover:bg-gray-50">
-                <td className="px-3.5 py-3 border-b border-gray-300 text-black">{user.id}</td>
+                <td className="px-3.5 py-3 border-b border-gray-300 text-black">{index + 1}</td>
                 <td className="px-3.5 py-3 border-b border-gray-300 text-black">{user.username || user.email || 'N/A'}</td>
                 <td className="px-3.5 py-3 border-b border-gray-300 text-black">
                   {editingUser?.id === user.id ? (
