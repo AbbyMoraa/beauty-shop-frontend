@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 # Beauty Haven 💄
+=======
+# Beauty Haven 
+>>>>>>> c6c901ccc12e8c4ef7a67a12109a29e9b5f2605c
 
 A modern e-commerce platform for beauty products built with React and Vite.
 
 ## Features
 
+<<<<<<< HEAD
 - 🛍️ Product browsing and search
 - 🛒 Shopping cart functionality
 - 💳 Secure checkout process
@@ -12,6 +17,16 @@ A modern e-commerce platform for beauty products built with React and Vite.
 - 👥 User management
 - 📦 Order tracking
 - 📱 Responsive design
+=======
+- Product browsing and search
+- Shopping cart functionality
+- Secure checkout process
+- User authentication (login/register)
+- Admin dashboard with analytics
+- User management
+- Order tracking
+- Responsive design
+>>>>>>> c6c901ccc12e8c4ef7a67a12109a29e9b5f2605c
 
 ## Tech Stack
 
@@ -75,8 +90,11 @@ beauty-shop-frontend/
 ## Available Scripts
 
 - `npm run dev` - Start development server
+<<<<<<< HEAD
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
+=======
+>>>>>>> c6c901ccc12e8c4ef7a67a12109a29e9b5f2605c
 
 ## Admin Access
 
