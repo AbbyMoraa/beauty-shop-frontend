@@ -18,7 +18,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
           <Link to="/" className="text-2xl font-bold text-pink-600">
-            BEAUTY SHOP
+            BEAUTY HAVEN
           </Link>
           <div className="flex gap-6 items-center">
             <Link 
@@ -45,6 +45,16 @@ const Navbar = () => {
             >
               Cart
             </Link>
+            {user && user.role === 'admin' && (
+              <Link 
+                to="/admin" 
+                className={`text-pink-600 font-bold text-lg transition ${
+                  location.pathname === '/admin' ? 'opacity-100' : 'opacity-70 hover:opacity-100'
+                }`}
+              >
+                Admin
+              </Link>
+            )}
             {user ? (
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full bg-pink-600 text-white flex items-center justify-center font-bold text-xl">

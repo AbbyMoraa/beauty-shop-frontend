@@ -10,6 +10,7 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import OrderConfirmation from "./pages/payment/OrderConfirmation";
 import ApiTest from "./pages/ApiTest";
+import AdminDashboard from "./admin/pages/AdminDashboard.jsx";
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/order-confirmation" element={<OrderConfirmation />} />
             <Route path="/api-test" element={<ApiTest />} />
+            
+            {/* Admin Dashboard */}
+            <Route path="/admin" element={<AdminDashboard />} />
           </Routes>
         </main>
 
@@ -38,4 +42,3 @@ function App() {
 }
 
 export default App;
-

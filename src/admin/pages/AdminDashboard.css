@@ -1,16 +1,16 @@
 .admin-dashboard {
   min-height: 100vh;
-  background: linear-gradient(to bottom right, mediumpurple, rebeccapurple);
+  background: linear-gradient(to bottom right, #fce7f3, #fbcfe8);
   font-family: Arial, sans-serif;
 }
 
 .admin-header {
-  background: linear-gradient(to right, midnightblue, darkslateblue);
+  background: linear-gradient(to right, #ec4899, #db2777);
   padding: 1.2rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 .admin-header h1 {
@@ -29,7 +29,7 @@
   padding: 0.6rem 1.3rem;
   background: transparent;
   color: white;
-  border: 2px solid lavender;
+  border: 2px solid white;
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.95rem;
@@ -37,15 +37,15 @@
 }
 
 .admin-header button:hover {
-  background: lavender;
-  color: midnightblue;
+  background: white;
+  color: #ec4899;
   transform: scale(1.05);
 }
 
 .admin-header button.active {
   background: white;
-  color: darkslateblue;
-  border-bottom: 4px solid gold;
+  color: #ec4899;
+  border-bottom: 4px solid #fbbf24;
   font-weight: bold;
 }
 
@@ -58,11 +58,11 @@
 .orders-section h2,
 .analytics-section h2,
 .user-management h2 {
-  color: white;
+  color: #ec4899;
   font-size: 1.8rem;
   margin-bottom: 1.2rem;
-  text-shadow: 1px 1px 3px black;
-  border-bottom: 2px solid white;
+  text-shadow: none;
+  border-bottom: 2px solid #ec4899;
   padding-bottom: 0.4rem;
   display: inline-block;
 }
@@ -75,8 +75,8 @@
   flex-wrap: wrap;
 }
 
-input,
-select {
+.admin-dashboard input,
+.admin-dashboard select {
   padding: 0.6rem;
   border: 1px solid lightgray;
   border-radius: 4px;
@@ -84,36 +84,36 @@ select {
   background: white;
 }
 
-input:focus,
-select:focus {
+.admin-dashboard input:focus,
+.admin-dashboard select:focus {
   outline: none;
-  border-color: slateblue;
-  box-shadow: 0 0 5px slateblue;
+  border-color: #ec4899;
+  box-shadow: 0 0 5px #ec4899;
 }
 
-button {
+.admin-dashboard button {
   padding: 0.6rem 1.2rem;
-  background: linear-gradient(to bottom, mediumslateblue, slateblue);
+  background: #ec4899;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 0.9rem;
   transition: all 0.2s;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-button:hover {
-  background: linear-gradient(to bottom, slateblue, darkslateblue);
+.admin-dashboard button:hover {
+  background: #db2777;
   transform: translateY(-1px);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
 }
 
-button:active {
+.admin-dashboard button:active {
   transform: translateY(0);
 }
 
-table {
+.admin-dashboard table {
   width: 100%;
   background: white;
   border-collapse: collapse;
@@ -122,8 +122,8 @@ table {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
-th {
-  background: linear-gradient(to bottom, darkslateblue, midnightblue);
+.admin-dashboard th {
+  background: #ec4899;
   color: white;
   padding: 0.9rem;
   text-align: left;
@@ -131,17 +131,17 @@ th {
   font-weight: bold;
 }
 
-td {
+.admin-dashboard td {
   padding: 0.8rem;
   border-bottom: 1px solid lightgray;
   color: black;
 }
 
-tr:hover {
-  background: lavender;
+.admin-dashboard tr:hover {
+  background: #fce7f3;
 }
 
-td input {
+.admin-dashboard td input {
   width: 90%;
   padding: 0.4rem;
 }
@@ -157,9 +157,9 @@ td input {
   background: white;
   padding: 1.5rem;
   border-radius: 8px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s;
-  border-left: 5px solid slateblue;
+  border-left: 5px solid #ec4899;
 }
 
 .card:hover {
@@ -176,7 +176,7 @@ td input {
 .big-number {
   font-size: 2.2rem;
   font-weight: bold;
-  color: slateblue;
+  color: #ec4899;
   margin: 0;
 }
 
@@ -189,10 +189,10 @@ td input {
 }
 
 .top-products h3 {
-  color: midnightblue;
+  color: #ec4899;
   margin-top: 0;
   font-size: 1.4rem;
-  border-bottom: 3px solid slateblue;
+  border-bottom: 3px solid #ec4899;
   padding-bottom: 0.5rem;
 }
 
@@ -207,13 +207,13 @@ td input {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
   z-index: 1000;
   min-width: 350px;
-  border: 3px solid slateblue;
+  border: 3px solid #ec4899;
 }
 
 .edit-modal h3 {
-  color: midnightblue;
+  color: #ec4899;
   margin-top: 0;
-  border-bottom: 2px solid lavender;
+  border-bottom: 2px solid #fce7f3;
   padding-bottom: 0.5rem;
 }
 

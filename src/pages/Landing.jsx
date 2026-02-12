@@ -2,23 +2,38 @@ import { Link } from 'react-router-dom';
 
 const Landing = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-200 via-pink-50 to-white flex items-center py-16">
-      {/* Hero Section */}
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-800 mb-4">
-            Welcome to <span className="text-pink-600">Beauty Shop</span>
-          </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Discover amazing beauty products delivered right to your doorstep. 
-            Shop skincare, makeup, and haircare products at your convenience.
-          </p>
-          <Link 
-            to="/products"
-            className="inline-block bg-pink-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-pink-700 transition shadow-lg"
-          >
-            Search Products
-          </Link>
+    <div className="min-h-screen bg-gradient-to-br from-pink-200 via-pink-50 to-white">
+      {/* Hero Section with Image */}
+      <div className="container mx-auto px-4 py-16">
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+          <div>
+            <h1 className="text-5xl md:text-6xl font-bold text-gray-800 mb-6">
+              Discover Your <span className="text-pink-600">Natural Beauty</span>
+            </h1>
+            <p className="text-xl text-gray-600 mb-8">
+              Premium beauty products delivered right to your doorstep. 
+              Shop skincare, makeup, and haircare essentials.
+            </p>
+            <div className="flex gap-4">
+              <Link 
+                to="/products"
+                className="bg-pink-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-pink-700 transition shadow-lg"
+              >
+                Shop Now
+              </Link>
+            </div>
+          </div>
+          <div className="relative">
+            <img 
+              src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80" 
+              alt="Beauty Products" 
+              className="rounded-2xl shadow-2xl w-full h-[500px] object-cover"
+            />
+            <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl">
+              <p className="text-3xl font-bold text-pink-600">24/7</p>
+              <p className="text-gray-600">Customer Support</p>
+            </div>
+          </div>
         </div>
 
         {/* Features Section */}

@@ -7,6 +7,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
+  const [error, setError] = useState('');
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,10 +16,12 @@ const Login = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setError(''); // Clear error when user types
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
     try {
       if (isLogin) {
         await dispatch(loginUser({ email: formData.email, password: formData.password })).unwrap();
@@ -27,7 +30,8 @@ const Login = () => {
       }
       navigate("/");
     } catch (err) {
-      console.error(err);
+      console.error('Login error:', err);
+      setError(err.message || 'Login failed. Please check your credentials.');
     }
   };
 
@@ -37,6 +41,11 @@ const Login = () => {
         <h2 className="text-3xl font-bold text-center mb-6 text-gray-800">
           {isLogin ? "Login" : "Register"}
         </h2>
+        {error && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            {error}
+          </div>
+        )}
         <form onSubmit={handleSubmit} className="space-y-4">
           {!isLogin && (
             <input
