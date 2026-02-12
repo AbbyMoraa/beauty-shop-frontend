@@ -18,27 +18,40 @@ export const fetchOrders = createAsyncThunk(
     const response = await axios.get(`${API_URL}/orders?${params}`, {
       headers: getAuthHeader()
     });
+    console.log('Orders response:', response.data);
     return response.data;
   }
 );
 
 export const fetchProductAnalytics = createAsyncThunk(
   'admin/fetchProductAnalytics',
-  async () => {
-    const response = await axios.get(`${API_URL}/analytics/products`, {
-      headers: getAuthHeader()
-    });
-    return response.data;
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(`${API_URL}/api/admin/analytics/products`, {
+        headers: getAuthHeader()
+      });
+      console.log('Product Analytics response:', response.data);
+      return response.data;
+    } catch (error) {
+      console.error('Product Analytics error:', error);
+      return rejectWithValue(error.response?.data || { message: 'Failed to fetch product analytics' });
+    }
   }
 );
 
 export const fetchOrderAnalytics = createAsyncThunk(
   'admin/fetchOrderAnalytics',
-  async () => {
-    const response = await axios.get(`${API_URL}/analytics/orders`, {
-      headers: getAuthHeader()
-    });
-    return response.data;
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(`${API_URL}/api/admin/analytics/orders`, {
+        headers: getAuthHeader()
+      });
+      console.log('Order Analytics response:', response.data);
+      return response.data;
+    } catch (error) {
+      console.error('Order Analytics error:', error);
+      return rejectWithValue(error.response?.data || { message: 'Failed to fetch order analytics' });
+    }
   }
 );
 

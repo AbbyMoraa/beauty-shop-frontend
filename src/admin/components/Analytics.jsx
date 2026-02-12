@@ -10,9 +10,12 @@ function Analytics() {
     to: ''
   });
 
+  console.log('Product Analytics:', productAnalytics);
+  console.log('Order Analytics:', orderAnalytics);
+
   useEffect(() => {
     loadAnalytics();
-  }, []);
+  }, [dispatch]);
 
   const loadAnalytics = () => {
     dispatch(fetchProductAnalytics(dateRange));
@@ -23,7 +26,7 @@ function Analytics() {
     <div>
       <h2 className="text-2xl font-bold text-gray-800 mb-6">Analytics Dashboard</h2>
 
-      <div className="flex gap-3 mb-5 flex-wrap">
+      <div className="flex gap-3 mb-5 flex-wrap items-center">
         <input 
           type="date" 
           value={dateRange.from}
@@ -37,24 +40,30 @@ function Analytics() {
           className="px-2.5 py-2.5 border border-gray-300 rounded bg-white text-sm focus:outline-none focus:border-pink-500 focus:shadow-[0_0_5px_#ec4899]"
         />
         <button onClick={loadAnalytics} className="px-5 py-2.5 bg-gray-600 text-white rounded text-sm transition-all duration-200 hover:bg-gray-700">Update</button>
+        
       </div>
 
       <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-5 mb-6">
+        {!orderAnalytics && (
+          <div className="col-span-full bg-yellow-50 border border-yellow-200 p-4 rounded-lg">
+            <p className="text-yellow-800">⚠️ Analytics data unavailable. Please ensure the backend analytics endpoints are configured.</p>
+          </div>
+        )}
         <div className="bg-white p-6 rounded-lg shadow-md transition-transform duration-200 border-l-4 border-pink-600 hover:shadow-lg">
           <h3 className="text-gray-600 m-0 mb-3 text-sm font-medium">Total Orders</h3>
-          <p className="text-3xl font-bold text-gray-800 m-0">{orderAnalytics?.total_orders || 0}</p>
+          <p className="text-3xl font-bold text-gray-800 m-0">{orderAnalytics?.totalOrders || 0}</p>
         </div>
         <div className="bg-white p-6 rounded-lg shadow-md transition-transform duration-200 border-l-4 border-pink-600 hover:shadow-lg">
           <h3 className="text-gray-600 m-0 mb-3 text-sm font-medium">Total Revenue</h3>
-          <p className="text-3xl font-bold text-gray-800 m-0">KSh {orderAnalytics?.total_revenue || 0}</p>
+          <p className="text-3xl font-bold text-gray-800 m-0">KSh {orderAnalytics?.totalRevenue || 0}</p>
         </div>
         <div className="bg-white p-6 rounded-lg shadow-md transition-transform duration-200 border-l-4 border-pink-600 hover:shadow-lg">
           <h3 className="text-gray-600 m-0 mb-3 text-sm font-medium">Avg Order Value</h3>
-          <p className="text-3xl font-bold text-gray-800 m-0">KSh {orderAnalytics?.avg_order_value || 0}</p>
+          <p className="text-3xl font-bold text-gray-800 m-0">KSh {orderAnalytics?.averageOrder || 0}</p>
         </div>
         <div className="bg-white p-6 rounded-lg shadow-md transition-transform duration-200 border-l-4 border-pink-600 hover:shadow-lg">
-          <h3 className="text-gray-600 m-0 mb-3 text-sm font-medium">Total Customers</h3>
-          <p className="text-3xl font-bold text-gray-800 m-0">{orderAnalytics?.total_customers || 0}</p>
+          <h3 className="text-gray-600 m-0 mb-3 text-sm font-medium">Pending Orders</h3>
+          <p className="text-3xl font-bold text-gray-800 m-0">{orderAnalytics?.pendingOrders || 0}</p>
         </div>
       </div>
 

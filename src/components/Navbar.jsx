@@ -10,6 +10,12 @@ const Navbar = () => {
   const { user } = useSelector((state) => state.auth);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  console.log('User data:', user);
+  console.log('Current path:', location.pathname);
+  
+  const isAdmin = user && (user.role === 'admin' || user.username === 'abbymoraa876@gmail.com' || user.email === 'abbymoraa876@gmail.com' || user.name === 'abbymoraa876@gmail.com');
+  console.log('Is admin?', isAdmin);
+
   const handleLogout = () => {
     dispatch(logout());
     navigate('/');
@@ -74,11 +80,11 @@ const Navbar = () => {
                 Orders
               </Link>
             )}
-            {user && (user.role === 'admin' || user.username === 'abbymoraa876@gmail.com' || user.email === 'abbymoraa876@gmail.com') && (
+            {isAdmin && (
               <Link 
                 to="/admin" 
                 className={`text-pink-600 font-bold text-lg transition ${
-                  location.pathname === '/admin' ? 'opacity-100' : 'opacity-70 hover:opacity-100'
+                  location.pathname.startsWith('/admin') ? 'opacity-100' : 'opacity-70 hover:opacity-100'
                 }`}
               >
                 Admin
@@ -142,7 +148,7 @@ const Navbar = () => {
                 Orders
               </Link>
             )}
-            {user && (user.role === 'admin' || user.username === 'abbymoraa876@gmail.com' || user.email === 'abbymoraa876@gmail.com') && (
+            {isAdmin && (
               <Link 
                 to="/admin" 
                 onClick={() => setIsMenuOpen(false)}
