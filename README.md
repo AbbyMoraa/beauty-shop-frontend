@@ -1,16 +1,112 @@
-# React + Vite
+# Beauty Haven 💄
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern e-commerce platform for beauty products built with React and Vite.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🛍️ Product browsing and search
+- 🛒 Shopping cart functionality
+- 💳 Secure checkout process
+- 👤 User authentication (login/register)
+- 📊 Admin dashboard with analytics
+- 👥 User management
+- 📦 Order tracking
+- 📱 Responsive design
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend:** React 18, Vite
+- **State Management:** Redux Toolkit
+- **Routing:** React Router v6
+- **Styling:** Tailwind CSS
+- **HTTP Client:** Axios
+- **Backend:** Flask (Python)
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+- Node.js (v16 or higher)
+- npm or yarn
+- Backend server running on `http://127.0.0.1:5000`
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone <repository-url>
+cd beauty-shop-frontend
+```
+
+2. Install dependencies
+```bash
+npm install
+```
+
+3. Start the development server
+```bash
+npm run dev
+```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+## Project Structure
+
+```
+beauty-shop-frontend/
+├── src/
+│   ├── admin/              # Admin dashboard components
+│   │   ├── components/     # Analytics, Orders, Users
+│   │   ├── pages/          # Admin dashboard page
+│   │   └── redux/          # Admin state management
+│   ├── components/         # Shared components (Navbar, Footer)
+│   ├── features/           # Feature-based modules
+│   │   ├── auth/           # Authentication
+│   │   ├── cart/           # Shopping cart
+│   │   ├── products/       # Product management
+│   │   └── payment/        # Payment processing
+│   ├── pages/              # Page components
+│   ├── app/                # Redux store configuration
+│   └── App.jsx             # Main app component
+├── public/                 # Static assets
+└── index.html              # HTML entry point
+```
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+
+## Admin Access
+
+Admin dashboard is accessible at `/admin` for users with admin role or email `abbymoraa876@gmail.com`.
+
+**Admin Features:**
+- View and manage orders
+- Analytics dashboard with sales metrics
+- User management (edit roles, delete users)
+- Export orders to CSV
+
+## Environment Variables
+
+The app connects to the backend at `http://127.0.0.1:5000`. Update the API URLs in:
+- `src/features/auth/authSlice.js`
+- `src/admin/redux/adminSlice.js`
+- `src/features/products/productAPI.js`
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License.
+
+## Contact
+
+For questions or support, please contact the development team.
