@@ -1,4 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "./features/auth/authSlice";
+import axios from "axios";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -14,6 +18,26 @@ import ApiTest from "./pages/ApiTest";
 import AdminDashboard from "./admin/pages/AdminDashboard.jsx";
 
 function App() {
+  const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    const restoreUser = async () => {
+      const savedToken = localStorage.getItem('token');
+      if (savedToken) {
+        try {
+          const response = await axios.get('http://127.0.0.1:5000/me', {
+            headers: { Authorization: `Bearer ${savedToken}` }
+          });
+          dispatch(setUser(response.data));
+        } catch (error) {
+          localStorage.removeItem('token');
+        }
+      }
+    };
+    restoreUser();
+  }, [dispatch]);
+
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
