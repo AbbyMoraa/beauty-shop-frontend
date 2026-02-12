@@ -45,7 +45,7 @@ const Navbar = () => {
             >
               Cart
             </Link>
-            {user && user.role === 'admin' && (
+            {user && (user.role === 'admin' || user.username === 'abbymoraa876@gmail.com' || user.email === 'abbymoraa876@gmail.com') && (
               <Link 
                 to="/admin" 
                 className={`text-pink-600 font-bold text-lg transition ${
@@ -58,7 +58,7 @@ const Navbar = () => {
             {user ? (
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full bg-pink-600 text-white flex items-center justify-center font-bold text-xl">
-                  {user.email ? user.email.charAt(0).toUpperCase() : user.name ? user.name.charAt(0).toUpperCase() : 'U'}
+                  {user.username ? user.username.charAt(0).toUpperCase() : user.email ? user.email.charAt(0).toUpperCase() : user.name ? user.name.charAt(0).toUpperCase() : 'U'}
                 </div>
                 <button 
                   onClick={handleLogout} 

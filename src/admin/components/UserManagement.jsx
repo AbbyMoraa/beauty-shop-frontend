@@ -20,8 +20,8 @@ function UserManagement() {
     setEditingUser(null);
   };
 
-  const handleDisable = (userId) => {
-    if (window.confirm('Are you sure you want to disable this user?')) {
+  const handleDelete = (userId) => {
+    if (window.confirm('Are you sure you want to delete this user? This cannot be undone.')) {
       dispatch(disableUser(userId));
     }
   };
@@ -34,7 +34,7 @@ function UserManagement() {
         <thead>
           <tr>
             <th className="bg-gray-700 text-white px-3.5 py-3.5 text-left text-sm font-semibold">ID</th>
-            <th className="bg-gray-700 text-white px-3.5 py-3.5 text-left text-sm font-semibold">Email</th>
+            <th className="bg-gray-700 text-white px-3.5 py-3.5 text-left text-sm font-semibold">Username/Email</th>
             <th className="bg-gray-700 text-white px-3.5 py-3.5 text-left text-sm font-semibold">Role</th>
             <th className="bg-gray-700 text-white px-3.5 py-3.5 text-left text-sm font-semibold">Status</th>
             <th className="bg-gray-700 text-white px-3.5 py-3.5 text-left text-sm font-semibold">Actions</th>
@@ -45,7 +45,7 @@ function UserManagement() {
             users.map(user => (
               <tr key={user.id} className="hover:bg-gray-50">
                 <td className="px-3.5 py-3 border-b border-gray-300 text-black">{user.id}</td>
-                <td className="px-3.5 py-3 border-b border-gray-300 text-black">{user.email}</td>
+                <td className="px-3.5 py-3 border-b border-gray-300 text-black">{user.username || user.email || 'N/A'}</td>
                 <td className="px-3.5 py-3 border-b border-gray-300 text-black">
                   {editingUser?.id === user.id ? (
                     <select 
@@ -57,10 +57,10 @@ function UserManagement() {
                       <option value="admin">Admin</option>
                     </select>
                   ) : (
-                    user.role
+                    user.role || 'customer'
                   )}
                 </td>
-                <td className="px-3.5 py-3 border-b border-gray-300 text-black">{user.active ? 'Active' : 'Disabled'}</td>
+                <td className="px-3.5 py-3 border-b border-gray-300 text-black">{user.active !== undefined ? (user.active ? 'Active' : 'Disabled') : 'Active'}</td>
                 <td className="px-3.5 py-3 border-b border-gray-300 text-black">
                   {editingUser?.id === user.id ? (
                     <>
@@ -70,7 +70,7 @@ function UserManagement() {
                   ) : (
                     <>
                       <button onClick={() => handleEdit(user)} className="px-4 py-2 bg-gray-600 text-white rounded text-sm transition-all duration-200 hover:bg-gray-700 mr-2">Edit</button>
-                      <button onClick={() => handleDisable(user.id)} className="px-4 py-2 bg-red-600 text-white rounded text-sm transition-all duration-200 hover:bg-red-700">Disable</button>
+                      <button onClick={() => handleDelete(user.id)} className="px-4 py-2 bg-red-600 text-white rounded text-sm transition-all duration-200 hover:bg-red-700">Delete</button>
                     </>
                   )}
                 </td>

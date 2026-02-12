@@ -65,7 +65,7 @@ export const updateUser = createAsyncThunk(
 export const disableUser = createAsyncThunk(
   'admin/disableUser',
   async (userId) => {
-    await axios.post(`${API_URL}/users/${userId}/disable`, {}, {
+    await axios.delete(`${API_URL}/users/${userId}`, {
       headers: getAuthHeader()
     });
     return userId;
@@ -103,7 +103,11 @@ const adminSlice = createSlice({
         state.orderAnalytics = action.payload;
       })
       .addCase(fetchUsers.fulfilled, (state, action) => {
-        state.users = action.payload;
+        // Remove duplicates based on ID
+        const uniqueUsers = Array.from(
+          new Map(action.payload.map(user => [user.id, user])).values()
+        );
+        state.users = uniqueUsers;
       })
       .addCase(updateUser.fulfilled, (state, action) => {
         const index = state.users.findIndex(u => u.id === action.payload.user_id);
@@ -112,10 +116,7 @@ const adminSlice = createSlice({
         }
       })
       .addCase(disableUser.fulfilled, (state, action) => {
-        const user = state.users.find(u => u.id === action.payload);
-        if (user) {
-          user.active = false;
-        }
+        state.users = state.users.filter(u => u.id !== action.payload);
       });
   }
 });

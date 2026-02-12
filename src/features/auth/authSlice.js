@@ -7,10 +7,13 @@ export const registerUser = createAsyncThunk(
   "auth/registerUser",
   async (userData, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${API_URL}/register`, userData);
+      const response = await axios.post(`${API_URL}/register`, {
+        username: userData.email,
+        password: userData.password
+      });
       return response.data;
     } catch (err) {
-      return rejectWithValue(err.response.data);
+      return rejectWithValue(err.response?.data || { message: 'Network error. Please check if backend is running.' });
     }
   }
 );
@@ -19,11 +22,14 @@ export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async (userData, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${API_URL}/login`, userData);
+      const response = await axios.post(`${API_URL}/login`, {
+        username: userData.email,
+        password: userData.password
+      });
       localStorage.setItem("token", response.data.access_token);
       return response.data;
     } catch (err) {
-      return rejectWithValue(err.response.data);
+      return rejectWithValue(err.response?.data || { message: 'Network error. Please check if backend is running.' });
     }
   }
 );
@@ -69,7 +75,8 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload.user || { email: action.payload.email, name: action.payload.name, role: action.payload.role };
+        // Save user data from backend response - handle whatever fields exist
+        state.user = action.payload;
         state.token = action.payload.access_token;
         localStorage.setItem("token", action.payload.access_token);
       })
