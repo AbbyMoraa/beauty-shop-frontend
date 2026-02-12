@@ -64,6 +64,16 @@ const Navbar = () => {
             >
               Cart
             </Link>
+            {user && (
+              <Link 
+                to="/orders" 
+                className={`text-pink-600 font-bold text-lg transition ${
+                  location.pathname === '/orders' ? 'opacity-100' : 'opacity-70 hover:opacity-100'
+                }`}
+              >
+                Orders
+              </Link>
+            )}
             {user && (user.role === 'admin' || user.username === 'abbymoraa876@gmail.com' || user.email === 'abbymoraa876@gmail.com') && (
               <Link 
                 to="/admin" 
@@ -123,6 +133,15 @@ const Navbar = () => {
             >
               Cart
             </Link>
+            {user && (
+              <Link 
+                to="/orders" 
+                onClick={() => setIsMenuOpen(false)}
+                className="block text-pink-600 font-bold text-lg py-2"
+              >
+                Orders
+              </Link>
+            )}
             {user && (user.role === 'admin' || user.username === 'abbymoraa876@gmail.com' || user.email === 'abbymoraa876@gmail.com') && (
               <Link 
                 to="/admin" 

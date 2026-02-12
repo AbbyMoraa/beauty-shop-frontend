@@ -8,6 +8,7 @@ import ProductDetails from "./pages/ProductDetails";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import Orders from "./pages/Orders";
 import OrderConfirmation from "./pages/payment/OrderConfirmation";
 import ApiTest from "./pages/ApiTest";
 import AdminDashboard from "./admin/pages/AdminDashboard.jsx";
@@ -26,6 +27,7 @@ function App() {
             <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/login" element={<Login />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/orders" element={<Orders />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/order-confirmation" element={<OrderConfirmation />} />
             <Route path="/api-test" element={<ApiTest />} />
