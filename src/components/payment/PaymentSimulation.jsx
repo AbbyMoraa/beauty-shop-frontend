@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { simulatePayment, initiatePayment } from "../../features/payment/paymentSlice";
+import { simulatePayment, initiatePayment, clearPaymentStatus } from "../../features/payment/paymentSlice";
 
 const PaymentSimulation = ({ orderId, onPaymentSuccess }) => {
   const dispatch = useDispatch();
   const { loading, error, paymentStatus } = useSelector((state) => state.payment);
   const [paymentMethod, setPaymentMethod] = useState("simulate");
   const [phoneNumber, setPhoneNumber] = useState("");
+
+  useEffect(() => {
+    dispatch(clearPaymentStatus());
+  }, [dispatch]);
 
   const handleSimulatePayment = async () => {
     const result = await dispatch(simulatePayment(orderId));
