@@ -1,14 +1,11 @@
-<<<<<<< HEAD
-# Beauty Haven 💄
-=======
+
 # Beauty Haven 
->>>>>>> c6c901ccc12e8c4ef7a67a12109a29e9b5f2605c
+
 
 A modern e-commerce platform for beauty products built with React and Vite.
 
 ## Features
 
-<<<<<<< HEAD
 - 🛍️ Product browsing and search
 - 🛒 Shopping cart functionality
 - 💳 Secure checkout process
@@ -17,7 +14,7 @@ A modern e-commerce platform for beauty products built with React and Vite.
 - 👥 User management
 - 📦 Order tracking
 - 📱 Responsive design
-=======
+- 
 - Product browsing and search
 - Shopping cart functionality
 - Secure checkout process
@@ -26,7 +23,7 @@ A modern e-commerce platform for beauty products built with React and Vite.
 - User management
 - Order tracking
 - Responsive design
->>>>>>> c6c901ccc12e8c4ef7a67a12109a29e9b5f2605c
+
 
 ## Tech Stack
 
@@ -43,7 +40,7 @@ A modern e-commerce platform for beauty products built with React and Vite.
 
 - Node.js (v16 or higher)
 - npm or yarn
-- Backend server running on `http://127.0.0.1:5000`
+- Backend server running on `http://beauty-shop-backend-wegm.onrender.com/`
 
 ### Installation
 
@@ -62,8 +59,10 @@ npm install
 ```bash
 npm run dev
 ```
-
-4. Open your browser and navigate to `http://localhost:5173`
+4. Start the backend server,
+   - Backend link : http://beauty-shop-backend-wegm.onrender.com/
+     
+5. Open your browser and navigate to `http://localhost:5173`
 
 ## Project Structure
 
@@ -90,11 +89,10 @@ beauty-shop-frontend/
 ## Available Scripts
 
 - `npm run dev` - Start development server
-<<<<<<< HEAD
+
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
-=======
->>>>>>> c6c901ccc12e8c4ef7a67a12109a29e9b5f2605c
+
 
 ## Admin Access
 
@@ -105,12 +103,16 @@ Admin dashboard is accessible at `/admin` for users with admin role or email `ab
 - Analytics dashboard with sales metrics
 - User management (edit roles, delete users)
 - Export orders to CSV
+- 
+## Backend Repository
 
-## Environment Variables
+Here is the backend repo : https://github.com/AbbyMoraa/beauty-shop-backend.git
 
-The app connects to the backend at `http://127.0.0.1:5000`. Update the API URLs in:
+- ## Environment Variables
+
+The app connects to the backend at `http://beauty-shop-backend-wegm.onrender.com/`. Update the API URLs in:
 - `src/features/auth/authSlice.js`
-- `src/admin/redux/adminSlice.js`
+`src/admin/redux/adminSlice.js`
 - `src/features/products/productAPI.js`
 
 ## Contributing
