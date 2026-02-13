@@ -34,7 +34,7 @@ const Checkout = () => {
     try {
       for (const item of items) {
         await api.post('/cart', {
-          product_id: item.id,
+          product_id: item.product_id || item.id,
           quantity: item.quantity
         });
       }
