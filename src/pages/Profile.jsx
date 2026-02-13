@@ -4,7 +4,7 @@ import { setUser, logout } from "../features/auth/authSlice.js";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://beauty-shop-backend-wegm.onrender.com";
 
 const Profile = () => {
   const dispatch = useDispatch();

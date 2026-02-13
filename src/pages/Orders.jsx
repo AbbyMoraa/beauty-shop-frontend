@@ -14,7 +14,7 @@ const Orders = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:5000/orders', {
+      const response = await axios.get('https://beauty-shop-backend-wegm.onrender.com/orders', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setOrders(response.data);
