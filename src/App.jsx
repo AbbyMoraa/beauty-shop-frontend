@@ -26,7 +26,7 @@ function App() {
       const savedToken = localStorage.getItem('token');
       if (savedToken) {
         try {
-          const response = await axios.get('https://beauty-shop-backend-wegm.onrender.com/me', {
+          const response = await axios.get('https://beauty-shop-backend-xqxl.onrender.com/', {
             headers: { Authorization: `Bearer ${savedToken}` }
           });
           dispatch(setUser(response.data));
