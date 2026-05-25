@@ -1,4 +1,4 @@
-const API_URL = 'https://beauty-shop-backend-wegm.onrender.com';
+const API_URL = 'https://beauty-shop-backend-xqxl.onrender.com';
 
 export const fetchProducts = async (filters = {}) => {
   const params = new URLSearchParams();
